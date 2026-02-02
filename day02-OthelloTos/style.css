@@ -1,0 +1,170 @@
+:root{
+  --bg:#ffffff;
+  --grid:#111;
+  --hint:#bdbdbd;
+  --cell:64px;
+  --gap:0px;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+  background:var(--bg);
+  color:#111;
+}
+
+.top{
+  max-width: 980px;
+  margin: 20px auto 10px;
+  padding: 0 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px 16px;
+  align-items: center;
+}
+
+.title{
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: .2px;
+}
+
+.status{
+  grid-column: 1 / -1;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+#turn{
+  font-weight: 600;
+}
+
+.info{
+  grid-column: 1 / -1;
+  font-size: 22px;
+  color:#444;
+  text-align: center;
+}
+
+
+.counts{
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+.pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border:1px solid #ddd;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.disk{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  display:inline-block;
+  border:1px solid #111;
+}
+.disk.black{ background:#111; }
+.disk.white{ background:#fff; }
+
+.wrap{
+  display:flex;
+  justify-content:center;
+  padding: 14px 16px 10px;
+}
+
+.board{
+  display:grid;
+  grid-template-columns: repeat(8, var(--cell));
+  grid-template-rows: repeat(8, var(--cell));
+  gap: var(--gap);
+  border: 2px solid var(--grid);
+}
+
+.cell{
+  position: relative;
+  width: var(--cell);
+  height: var(--cell);
+  border-right: 1px solid var(--grid);
+  border-bottom: 1px solid var(--grid);
+  background: #fff;
+  cursor: pointer;
+  user-select:none;
+}
+
+.cell:nth-child(8n){
+  border-right:none;
+}
+.cell:nth-last-child(-n+8){
+  border-bottom:none;
+}
+
+/* 石 */
+.stone{
+  position:absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+}
+
+.cell.black .stone{ background:#111; }
+.cell.white .stone{ 
+    background:#fff;
+    border: 2px solid #111;
+ }
+
+/* 置ける場所の灰点 */
+.cell.hint::after{
+  content:"";
+  position:absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--hint);
+  opacity: 0.95;
+}
+
+/* クリックしやすく */
+.cell.hint:hover::after{
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.bottom{
+  max-width: 980px;
+  margin: 6px auto 20px;
+  padding: 0 16px;
+  display:flex;
+  justify-content:center;
+}
+
+.btn{
+  border:1px solid #111;
+  background:#fff;
+  color:#111;
+  padding:10px 14px;
+  border-radius: 10px;
+  font-weight:600;
+  cursor:pointer;
+}
+.btn:hover{
+  background:#111;
+  color:#fff;
+}
+
+/* レスポンシブ */
+@media (max-width: 620px){
+  :root{ --cell: 42px; }
+  .top{ margin-top: 14px; }
+}

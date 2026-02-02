@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Othello Toss</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <header class="top">
+    <div class="title">オセロトス</div>
+    <div class="status">
+      <div id="turn">Turn: Player 1</div>
+    </div>
+    <div id="info" class="info">君のターンでも、君の色が置かれるとは限らない。</div>
+    <div class="counts">
+      <div class="pill"><span class="disk black"></span><span id="blackCount">2</span></div>
+      <div class="pill"><span class="disk white"></span><span id="whiteCount">2</span></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div id="board" class="board" aria-label="othello board"></div>
+  </main>
+
+  <footer class="bottom">
+    <button id="reset" class="btn">Reset</button>
+  </footer>
+</body>
+</html>
