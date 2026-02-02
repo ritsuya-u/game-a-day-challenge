@@ -116,11 +116,14 @@ body{
   background: transparent;
 }
 
-.cell.black .stone{ background:#111; }
+.cell.black .stone{
+   background:#111;
+   border: 2px solid #111 
+}
 .cell.white .stone{ 
     background:#fff;
     border: 2px solid #111;
- }
+}
 
 /* 置ける場所の灰点 */
 .cell.hint::after{
