@@ -44,10 +44,10 @@ function loadImage(key, src){
 
 // Preload (filenames exactly as requested)
 const PATH = "./images/";
-loadImage("oni", PATH + "oni.png");
-loadImage("kanabou", PATH + "kanabou.png");
-loadImage("dangan", PATH + "dangan.png");
-loadImage("juu", PATH + "juu.png");
+loadImage("oni", PATH + "oni.webp");
+loadImage("kanabou", PATH + "kanabou.webp");
+loadImage("dangan", PATH + "dangan.webp");
+loadImage("juu", PATH + "juu.webp");
 
 // beans (player sprite = saya, bullet = mame)
 const WEAPONS = [
@@ -57,8 +57,8 @@ const WEAPONS = [
     desc:
 `言わずとしれた豆の王様。豆腐、納豆、味噌、醤油など日本の食卓を語るには欠かせない。
 畑の肉と言われるほどの生命力を考えれば、鬼退治に担ぎ出されるのも頷けるだろう。`,
-    saya: PATH + "daizu_saya.png",
-    mame: PATH + "daizu_mam.png",
+    saya: PATH + "daizu_saya.webp",
+    mame: PATH + "daizu_mam.webp",
     stats: { pow:5, spd:5, rof:4, size:6, hp:5 },
   },
   {
@@ -67,8 +67,8 @@ const WEAPONS = [
     desc:
 `赤飯や餡子、お手玉の中の材料にもなっている。
 ほのかな甘みと上品な色合いを持つ彼女は、まさに豆界のヒロインである。`,
-    saya: PATH + "azuki_saya.png",
-    mame: PATH + "azuki_mame.png",
+    saya: PATH + "azuki_saya.webp",
+    mame: PATH + "azuki_mame.webp",
     stats: { pow:1, spd:6, rof:10, size:2, hp:2 },
   },
   {
@@ -77,8 +77,8 @@ const WEAPONS = [
     desc:
 `中南米を故郷に持つフランス料理の名脇役。豆類としては世界最大の生産量を誇る。
 しかし、生産量が多いのと鬼退治に役立つことはまた別のお話。`,
-    saya: PATH + "ingenmame_saya.png",
-    mame: PATH + "ingenmame_mame.png",
+    saya: PATH + "ingenmame_saya.webp",
+    mame: PATH + "ingenmame_mame.webp",
     stats: { pow:2, spd:5, rof:8, size:3, hp:3 },
   },
   {
@@ -87,8 +87,8 @@ const WEAPONS = [
     desc:
 `メンデルの実験でお馴染みエンドウ豆。
 古代エジプトや古代ギリシアでの記録もあり、世界最古の農作物と呼び声高い。`,
-    saya: PATH + "endoumame_saya.png",
-    mame: PATH + "endoumame_mame.png",
+    saya: PATH + "endoumame_saya.webp",
+    mame: PATH + "endoumame_mame.webp",
     stats: { pow:3, spd:3, rof:7, size:4, hp:6 },
   },
   {
@@ -97,8 +97,8 @@ const WEAPONS = [
     desc:
 `豆の形からその名がつけられたインド食。
 つい数十年前に日本へきたばかりのひよっこに、果たして鬼退治ができるのだろうか。`,
-    saya: PATH + "hiyokomame_saya.png",
-    mame: PATH + "hiyokomame_mame.png",
+    saya: PATH + "hiyokomame_saya.webp",
+    mame: PATH + "hiyokomame_mame.webp",
     stats: { pow:7, spd:2, rof:3, size:7, hp:5 },
   },
   {
@@ -109,8 +109,8 @@ const WEAPONS = [
 しかし美味しいのは三日だけ。
 そんな勇ましくも刹那的なソラマメは、
 鬼退治への切り札とも呼べるだろう。`,
-    saya: PATH + "soramame_saya.png",
-    mame: PATH + "soramame_mame.png",
+    saya: PATH + "soramame_saya.webp",
+    mame: PATH + "soramame_mame.webp",
     stats: { pow:12, spd:2, rof:1, size:10, hp:4 },
   },
   {
@@ -120,8 +120,8 @@ const WEAPONS = [
 `地上で咲いて地下で実る豆の異端児。
 高カロリー高スタミナな存在として、
 多くのものを支えてきた実績あり。`,
-    saya: PATH + "rakkasei_saya.png",
-    mame: PATH + "rakkasei_mame.png",
+    saya: PATH + "rakkasei_saya.webp",
+    mame: PATH + "rakkasei_mame.webp",
     stats: { pow:8, spd:4, rof:3, size:8, hp:8 },
   },
   {
@@ -130,8 +130,8 @@ const WEAPONS = [
     desc:
 `火薬の燃焼で生じる高圧ガスで弾丸を高速で発射する武器。
 弾丸は高い運動エネルギーを持ち、強い殺傷能力や破壊能力を持つ。`,
-    saya: PATH + "juu.png",
-    mame: PATH + "dangan.png",
+    saya: PATH + "juu.webp",
+    mame: PATH + "dangan.webp",
     stats: { pow:100, spd:100, rof:100, size:2, hp:100 },
   },
 ];
