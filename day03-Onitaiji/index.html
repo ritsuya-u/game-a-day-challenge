@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONITAIJI</title>
+  <link rel="stylesheet" href="./style.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+  
+</head>
+<body>
+  <main class="wrap">
+    <!-- TITLE -->
+    <section id="screenTitle" class="screen">
+      <div class="titleBig">ONITAIJI</div>
+
+      <div class="titleGrid">
+        <button id="btnPrev" class="navBtn" aria-label="前へ">
+          <span class="tri">◀</span>
+        </button>
+
+        <div class="card">
+          <div class="cardTop">
+            <div class="beanName" id="beanName">ダイズ</div>
+          </div>
+
+          <div class="cardMid">
+            <div class="imgBox">
+              <img id="beanImg" alt="bean" />
+            </div>
+
+            <div class="descBox">
+              <p id="beanDesc" class="desc"></p>
+            </div>
+
+            <div class="radarBox">
+              <canvas id="radar" width="260" height="220"></canvas>
+              
+            </div>
+          </div>
+
+          <div class="cardBottom">
+            <button id="btnPlay" class="playBtn">PLAY</button>
+          </div>
+        </div>
+
+        <button id="btnNext" class="navBtn" aria-label="次へ">
+          <span class="tri">▶</span>
+        </button>
+      </div>
+
+      <div class="hint">
+        ↑ / ↓ で移動、Spaceで発射
+      </div>
+    </section>
+
+    <!-- BATTLE -->
+    <section id="screenBattle" class="screen hidden">
+      <div class="hud">
+        <div class="hudLeft">
+          <div class="hpWrap">
+            <div class="hpLabel">YOU</div>
+            <div class="hpBar"><div id="hpYou" class="hpFill"></div></div>
+          </div>
+        </div>
+
+        <div class="hudCenter">
+          <div class="timeBox">TIME: <span id="timeLeft">30.0</span></div>
+        </div>
+
+        <div class="hudRight">
+          <div class="hpWrap right">
+            <div class="hpLabel">ONI</div>
+            <div class="hpBar"><div id="hpOni" class="hpFill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="battleFrame">
+        <canvas id="game" width="960" height="540"></canvas>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="screen hidden">
+      <div id="resultText" class="resultText">ONIWASOTO!!</div>
+      <button id="btnBack" class="backBtn">タイトルに戻る</button>
+    </section>
+
+
+
+  </main>
+<script src="./script.js"></script>
+</body>
+</html>
