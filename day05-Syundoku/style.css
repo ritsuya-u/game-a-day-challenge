@@ -1,0 +1,91 @@
+*{
+  box-sizing:border-box;
+  font-family: "Noto Sans JP", system-ui, sans-serif;
+}
+
+body{
+  margin:0;
+  background: linear-gradient(180deg, #1e3c72, #2a5298);
+  color:#fff;
+}
+
+#app{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+h1{
+  font-size:40px;
+  margin-bottom:12px;
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.title-main{
+  font-size: clamp(48px, 8vw, 72px); /* デカく */
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  margin-top: -40px;   /* ← 上に持ち上げる */
+  margin-bottom: 12px;
+  font-family: "Dela Gothic One", sans-serif;
+    display: block;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+   
+}
+
+.title-sub{
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+.sub{
+  opacity:.8;
+  margin-bottom:40px;
+}
+
+button{
+  background: #b56161;        /* 青 */
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 9px 22px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .05s ease, background .15s ease;
+}
+
+button:hover{
+  background: #1d4ed8;
+}
+
+button:active{
+  transform: scale(0.96);
+}
+
+
+.char{
+  font-size: 42px;
+  line-height: 1.2;
+}
+
+.char::first-line{
+  font-size: 26px;
+  opacity: 0.8;
+}
+
+
+
+
+.result{
+  font-size:56px;
+  margin-top:20px;
+}
