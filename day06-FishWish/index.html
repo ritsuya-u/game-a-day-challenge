@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>fishwish</title>
+  <link rel="stylesheet" href="./style.css" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <div id="pcOnly" class="pcOnly hidden">
+    <div class="pcOnlyBox">
+      <div class="pcOnlyTitle">PC専用です</div>
+      <div class="pcOnlyText">このゲームはスマホ対応していません。PC（横幅 1024px 以上）で開いてください。</div>
+    </div>
+  </div>
+
+  <!-- TITLE SCREEN -->
+  <div id="titleScreen" class="screen titleScreen">
+    <div class="titleWrap">
+      <img id="imgTitle" class="titleImg" src="./images/title.webp" alt="fishwish" draggable="false">
+      <div class="titleFishWrap">
+        <img id="imgTitleFish" class="titleFish" src="./images/player.webp" alt="player" draggable="false">
+      </div>
+      <button id="btnStart" class="imgBtn" aria-label="start">
+        <img src="./images/btn_start.webp" alt="start" draggable="false">
+      </button>
+    </div>
+  </div>
+
+  <!-- GAME CANVAS -->
+  <canvas id="game" class="gameCanvas"></canvas>
+
+  <!-- RESULT -->
+  <div id="resultScreen" class="screen resultScreen hidden">
+    <div class="resultWrap">
+      <div class="resultLabel">スコア</div>
+      <div id="resultScore" class="resultScore">0</div>
+      <button id="btnToTitle" class="imgBtn" aria-label="to title">
+        <img src="./images/btn_title.webp" alt="title" draggable="false">
+      </button>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
