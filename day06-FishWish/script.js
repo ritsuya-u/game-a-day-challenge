@@ -286,7 +286,7 @@ function spawn(dt){
     // 出現の間引き
     const thinBase =
       (phase === 1) ? 0.89 :
-      (phase === 2) ? 0.81 :
+      (phase === 2) ? 0.85 :
       0.83;
 
     let thin = Math.pow(thinBase, lv - 1);
