@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ガチャコン</title>
+  <link rel="stylesheet" href="style.css" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- LOADING -->
+    <section id="screenLoading" class="screen show">
+      <div class="loadingBox">
+        <div class="spinner"></div>
+        <div class="loadingText">ロード中…</div>
+        <div class="loadingHint">画像を読み込んでいます</div>
+      </div>
+    </section>
+
+    <!-- TITLE -->
+    <section id="screenTitle" class="screen">
+      <div class="titleWrap">
+        <img id="imgTitle" class="titleImg" alt="title" />
+        <div class="titleButtons">
+          <button class="btn primary" id="btnToGatyakon">ガチャコン</button>
+          <button class="btn" id="btnToCollection">コレクション</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GATYAKON -->
+    <section id="screenGatyakon" class="screen">
+      <div class="machineWrap">
+        <!-- layers: back -> front
+          num_gatyakon (back)
+          hundle
+          kapsel
+          outlet (front)
+        -->
+        <img id="imgMachine" class="machineBase" alt="machine" />
+        <img id="imgHandle" class="machineHandle" alt="handle" />
+        <img id="imgCapsule" class="machineCapsule" alt="capsule" />
+        <img id="imgOutlet" class="machineOutlet" alt="outlet" />
+
+        <!-- handle tip tappable area -->
+        <div id="handleHit" class="handleHit" aria-label="handle hit"></div>
+
+
+        <button class="btn btnOverlay" id="btnBackFromGatyakon">もどる</button>
+
+
+
+        <!-- number reveal -->
+        <div id="reveal" class="reveal">
+          <div class="revealInner">
+            <div id="revealChar" class="revealChar">0</div>
+            <div id="revealLabel" class="revealLabel">【 0 】</div>
+            <div class="revealHint">コレクションに追加しました</div>
+            <button class="btn small" id="btnRevealClose">閉じる</button>
+          </div>
+        </div>
+
+          
+        </section>
+      </div>
+
+      
+    </section>
+
+    <!-- COLLECTION -->
+    <section id="screenCollection" class="screen">
+      <div class="collectionWrap">
+        <div class="collectionGrid" id="collectionGrid"></div>
+      </div>
+
+        <div class="bottomBar">
+        <button class="btn" id="btnBackFromCollection">もどる</button>
+        </div>
+
+
+
+     
+    </section>
+
+    <!-- DETAIL -->
+    <section id="screenDetail" class="screen">
+      <div class="detailWrap">
+        <div id="detailChar" class="detailChar">0</div>
+        <div id="detailTitle" class="detailTitle">【 0 】</div>
+        <div id="detailContent" class="detailContent"></div>
+      </div>
+
+      <div class="bottomBar">
+        <button class="btn" id="btnCloseDetail">閉じる</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
