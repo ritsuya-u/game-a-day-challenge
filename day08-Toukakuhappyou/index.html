@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>当確発表～!!</title>
+  <link rel="stylesheet" href="style.css" />
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- LOADING -->
+    <section id="screenLoading" class="screen show">
+      <div class="loadingBox">
+        <div class="spinner"></div>
+        <div class="loadingText">ロード中…</div>
+        <div class="loadingHint">画像を読み込んでいます</div>
+      </div>
+    </section>
+
+    <!-- TITLE -->
+    <section id="screenTitle" class="screen">
+      <div class="titleWrap">
+        <img id="imgTitle" class="titleImg" alt="title" />
+        <div class="titleSub">誰よりも早く、しかし正確に当選確実を発表せよ！</div>
+        <button id="btnStart" class="btn primary">開票する</button>
+        <div class="titleNote"></div>
+      </div>
+    </section>
+
+    <!-- GAME -->
+    <section id="screenGame" class="screen">
+      <header class="topBar">
+        <div class="topLeft">
+          <div class="gameTitle">当確発表～!!</div>
+          <div class="clock" id="uiClock">20:00:00</div>
+        </div>
+        <div class="topRight">
+          <div class="kpi">
+            <div class="kpiLabel">開票率</div>
+            <div class="kpiValue" id="uiRate">0%</div>
+          </div>
+          <div class="kpi">
+            <div class="kpiLabel">残り票数</div>
+            <div class="kpiValue mono" id="uiRemain">-</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="candidateNames">
+          <div class="nameBox">
+            <div class="nameTag">候補A</div>
+            <div class="nameMain" id="nameA">A</div>
+          </div>
+          <div class="vs">VS</div>
+          <div class="nameBox">
+            <div class="nameTag">候補B</div>
+            <div class="nameMain" id="nameB">B</div>
+          </div>
+        </div>
+
+        <div class="bars">
+          <div class="barRow">
+            <div class="barHead">
+              <div class="barLabel" id="labelA">A</div>
+              <div class="barValue mono" id="uiVotesA">0</div>
+            </div>
+            <div class="barTrack">
+              <div class="barFill" id="barA"></div>
+            </div>
+          </div>
+
+          <div class="barRow">
+            <div class="barHead">
+              <div class="barLabel" id="labelB">B</div>
+              <div class="barValue mono" id="uiVotesB">0</div>
+            </div>
+            <div class="barTrack">
+              <div class="barFill" id="barB"></div>
+            </div>
+          </div>
+
+          <div class="subInfo">
+            <div>開票済み票数：<span class="mono" id="uiOpened">0</span></div>
+            <div>票差：<span class="mono" id="uiDiff">0</span></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="btnCallA" class="btn call">◯◯ 当選確実</button>
+          <button id="btnCallB" class="btn call">△△ 当選確実</button>
+        </div>
+
+        <div id="uiHint" class="hint">
+          ダッシュボードの数字から状況を推測し、当選確実を出せ。
+        </div>
+
+        <div id="uiToast" class="toast"></div>
+      </main>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="screen">
+      <div class="resultWrap">
+        <div class="resultTop">
+          <div class="badge" id="uiGrade">A</div>
+          <div class="resultTitle" id="uiWinnerLine">-</div>
+        </div>
+
+        <div class="resultCard">
+          <div class="row">
+            <div class="label">スコア</div>
+            <div class="value mono" id="uiScore">0</div>
+          </div>
+          <div class="row">
+            <div class="label">選挙の様相</div>
+            <div class="value" id="uiZoneLine">-</div>
+          </div>
+          <div class="row">
+            <div class="label">社長からのコメント</div>
+            <div class="value" id="uiComment">-</div>
+          </div>
+
+          <div class="mini">
+            <div>あなたの発表：<span class="mono" id="uiCall">-</span></div>
+            <div>当確報道時 推定勝率：<span class="mono" id="uiWinProb">-</span></div>
+          </div>
+        </div>
+
+        <button id="btnBack" class="btn">タイトルに戻る</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

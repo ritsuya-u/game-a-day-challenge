@@ -1,0 +1,343 @@
+:root{
+  --bg:#ffffff;
+  --fg:#111;
+  --muted:#666;
+  --line:#e6e6e6;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --btn:#111;
+  --btnFg:#fff;
+  --accent:#111;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+#app{ min-height:100%; }
+
+.screen{
+  min-height:100vh;
+  display:none;
+}
+.screen.show{ display:flex; }
+
+/* LOADING */
+#screenLoading{
+  align-items:center;
+  justify-content:center;
+}
+.loadingBox{
+  text-align:center;
+  padding:24px 18px;
+}
+.spinner{
+  width:42px;height:42px;
+  border:3px solid #ddd;
+  border-top-color:#111;
+  border-radius:999px;
+  margin:0 auto 12px;
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg);} }
+.loadingText{ font-weight:700; margin-bottom:6px; }
+.loadingHint{ color:var(--muted); font-size:13px; }
+
+/* TITLE */
+#screenTitle{
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+}
+.titleWrap{
+  width:min(720px, 92vw);
+  text-align:center;
+}
+.titleImg{
+  width:min(520px, 92vw);
+  height:auto;
+  display:block;
+  margin:0 auto 14px;
+}
+.titleSub{
+  font-size:20px;
+  color:var(--muted);
+  margin-bottom:100px;
+}
+.titleNote{
+  margin-top:14px;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* GAME */
+#screenGame{
+  flex-direction:column;
+}
+.topBar{
+  width:100%;
+  padding:14px 16px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.gameTitle{
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.clock{
+  font-size:12px;
+  color:var(--muted);
+  margin-top:4px;
+}
+.topRight{
+  display:flex;
+  gap:12px;
+  align-items:flex-end;
+}
+.kpi{
+  text-align:right;
+}
+.kpiLabel{
+  font-size:11px;
+  color:var(--muted);
+}
+.kpiValue{
+  font-weight:800;
+  font-size:18px;
+  line-height:1.05;
+}
+
+.main{
+  width:min(820px, 94vw);
+  margin:0 auto;
+  padding:18px 14px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.candidateNames{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  padding:10px 0 2px;
+}
+.nameBox{
+  padding:10px 14px;
+  border:1px solid var(--line);
+  border-radius:0px;
+  box-shadow: var(--shadow);
+  background:#fff;
+  min-width:140px;
+  text-align:center;
+}
+.nameTag{
+  font-size:11px;
+  color:var(--muted);
+}
+.nameMain{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+.vs{
+  font-weight:900;
+  color:#222;
+  opacity:.7;
+}
+
+.bars{
+  border:1px solid var(--line);
+  border-radius:0px;
+  box-shadow: var(--shadow);
+  background:#fff;
+  padding:14px 14px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.barRow{ display:flex; flex-direction:column; gap:8px; }
+.barHead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+}
+.barLabel{
+  font-weight:900;
+  letter-spacing:.02em;
+}
+.barValue{ font-weight:800; }
+
+.barTrack{
+  height:16px;
+  background:#f2f2f2;
+  border-radius:999px;
+  overflow:hidden;
+  border:1px solid #ededed;
+}
+.barFill{
+  height:100%;
+  width:50%;
+  background:#111;
+  border-radius:999px;
+  transition: width 220ms ease;
+}
+
+.subInfo{
+  margin-top:2px;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+}
+.hint{
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.btn{
+  appearance:none;
+  border:1px solid #111;
+  background:#fff;
+  color:#111;
+  padding:12px 14px;
+  border-radius:0px;
+  font-weight:800;
+  cursor:pointer;
+  width:100%;
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  transition: transform .05s ease, box-shadow .2s ease;
+}
+.btn:active{ transform: translateY(1px); }
+.btn.primary{
+  background:#fff;
+  color:#111;
+  border:3px solid #111;
+}
+.btn.call{
+  padding:14px 12px;
+}
+.btn[disabled]{
+  opacity:.45;
+  cursor:not-allowed;
+  box-shadow:none;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:16px;
+  transform:translateX(-50%);
+  background:#111;
+  color:#fff;
+  padding:10px 12px;
+  border-radius:0px;
+  font-size:13px;
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .25s ease, transform .25s ease;
+  white-space:nowrap;
+}
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(-4px);
+}
+
+.mono{ font-variant-numeric: tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
+
+/* RESULT */
+#screenResult{
+  align-items:center;
+  justify-content:center;
+  padding:22px 14px;
+}
+.resultWrap{
+  width:min(760px, 94vw);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:center;
+}
+.resultTop{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.badge{
+  width:56px;height:56px;
+  border-radius:0px;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:20px;
+}
+.resultTitle{
+  font-weight:900;
+  font-size:20px;
+  letter-spacing:.02em;
+}
+.resultCard{
+  width:100%;
+  border:1px solid var(--line);
+  border-radius:0px;
+  box-shadow: var(--shadow);
+  background:#fff;
+  padding:14px;
+}
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:8px 0;
+  border-bottom:1px dashed #eee;
+}
+.row:last-of-type{ border-bottom:none; }
+.label{ color:var(--muted); font-size:13px; }
+.value{ font-weight:900; }
+
+.mini{
+  margin-top:10px;
+  border-top:1px solid #eee;
+  padding-top:10px;
+  color:var(--muted);
+  font-size:12px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+/* mobile */
+@media (max-width: 520px){
+  .topRight{ gap:10px; }
+  .kpiValue{ font-size:16px; }
+  .candidateNames{ gap:10px; }
+  .nameBox{ min-width:120px; }
+}
+
+/* タイトルの「開票する」だけ短くする */
+#btnStart{
+  width: auto;            /* 100% を打ち消す */
+  display: inline-block;  /* 文字量＋paddingの幅にする */
+  padding: 10px 40px;     /* 横幅調整：ここをいじる */
+  font-size:20px;
+}
