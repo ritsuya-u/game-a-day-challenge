@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>関西弁タイピングゲーム ~はよ打てや~</title>
+  <link rel="stylesheet" href="style.css" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- TITLE -->
+    <section id="screenTitle" class="screen show">
+      <div class="titleWrap">
+        <img class="titleLogo" src="images/title.webp" alt="title" />
+        <button id="btnStart" class="btn primary">はよ打つ</button>
+        <div class="hint">スペースキーで開始</div>
+      </div>
+    </section>
+
+        <!-- PLAY -->
+        <section id="screenPlay" class="screen">
+        <div class="playWrap">
+            <div id="countdown" class="countdown hide">3</div>
+
+            <!-- ★追加：プレイUIの箱 -->
+            <div id="playUI" class="hide">
+            <div class="phraseArea">
+                <div id="jpPhrase" class="jpPhrase">なんでやねん</div>
+                <div class="barWrap">
+                <div id="timeBar" class="timeBar"></div>
+                </div>
+                <div id="romaLine" class="romaLine">nandeyanenn</div>
+            </div>
+
+            <div class="hint">ESCで中断（タイトルへ）</div>
+            </div>
+
+        </div>
+        </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="screen">
+      <div class="resultWrap">
+        <div class="resultTop">はよ打てた単語</div>
+        <div class="resultMid">
+          <span id="resultCount" class="resultCount">0</span><span class="resultKo">コ</span>
+        </div>
+        <div id="resultComment" class="resultComment">やるやん！</div>
+        <button id="btnBack" class="btn">タイトルに戻る</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
