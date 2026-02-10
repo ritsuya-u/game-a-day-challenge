@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cake Divider</title>
+  <link rel="stylesheet" href="style.css" />
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- LOADING -->
+    <section id="screenLoading" class="screen show">
+      <div class="loadingBox">
+        <div class="spinner"></div>
+        <div class="loadingText">ロード中…</div>
+        <div class="loadingHint">画像を読み込んでいます</div>
+      </div>
+    </section>
+
+    <!-- TITLE -->
+    <section id="screenTitle" class="screen">
+      <div class="titleWrap">
+        <img id="imgTitle" class="titleLogo" alt="Cake Divider" />
+        <button id="btnToPlay" class="imgBtn" aria-label="ケーキを切る">
+          <img id="imgBtnDivide" alt="ケーキを切る" />
+        </button>
+      </div>
+    </section>
+
+    <!-- PLAY -->
+    <section id="screenPlay" class="screen">
+      <div class="playTop">
+        <div id="orderText" class="orderText">n等分して！</div>
+      </div>
+
+      <div class="canvasWrap">
+        <canvas id="game"></canvas>
+      </div>
+
+      <div class="playBottom">
+        <div id="btnRowPlay1" class="btnRow show">
+          <button id="btnStop" class="imgBtn" aria-label="STOP">
+            <img id="imgBtnStop" alt="STOP" />
+          </button>
+        </div>
+
+        <div id="btnRowPlay2" class="btnRow">
+          <button id="btnMore" class="imgBtn" aria-label="さらに切る">
+            <img id="imgBtnMore" alt="さらに切る" />
+          </button>
+          <button id="btnFinish" class="imgBtn" aria-label="おわる">
+            <img id="imgBtnFinish" alt="おわる" />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screenResult" class="screen">
+      <div class="resultWrap">
+        <div class="resultTitle">結果</div>
+
+        <div class="resultGrid">
+          <div class="label">お客さんの注文</div>
+          <div class="value"><span id="resN"></span>等分</div>
+
+          <div class="label">あなたが切り分けた数</div>
+          <div class="value"><span id="resK"></span></div>
+
+          <div class="label">最大誤差</div>
+          <div class="value"><span id="resErr"></span>%</div>
+
+          <div class="label">お客さんからのコメント</div>
+          <div class="value"><span id="resComment"></span></div>
+        </div>
+
+        <div class="resultBtn">
+          <button id="btnBackTitle" class="imgBtn" aria-label="タイトルへ">
+            <img id="imgBtnBack" alt="タイトルへ" />
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
