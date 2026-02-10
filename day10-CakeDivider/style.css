@@ -161,3 +161,42 @@ canvas{
 }
 .value{ word-break: keep-all; }
 .resultBtn{ padding-top: 10px; }
+
+/* ===== Result: mobile balance ===== */
+@media (max-width: 520px){
+  .resultWrap{
+    gap: 16px;
+    padding-top: 4px;
+  }
+
+  .resultTitle{
+    letter-spacing: 0.08em;
+  }
+
+  /* 2列 → 1列（ラベル→値の縦並び） */
+  .resultGrid{
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .label{
+    font-size: 18px;          /* 少し小さめ */
+    opacity: 0.85;
+    margin-top: 6px;
+  }
+
+  .value{
+    font-size: 26px;          /* 値は目立たせる */
+    line-height: 1.2;
+    padding-bottom: 2px;
+  }
+
+  /* ボタン周りを少し詰める */
+  .resultBtn{
+    padding-top: 4px;
+  }
+  #btnBackTitle img,
+  #imgBtnBack{
+    width: min(320px, 82vw);
+  }
+}
