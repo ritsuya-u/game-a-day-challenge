@@ -50,21 +50,7 @@ async function loadCatFrames(baseName, count){
   return frames;
 }
 
-// ====== 音楽 ======
-const audio = new Audio('./audio/Omoide_Ha_Zutto-1(Slow).mp3');
-audio.loop = true;
-audio.preload = 'auto';
 
-function audioStart(){
-  if(audio.paused){
-    audio.play().catch(()=>{});
-  }
-}
-function audioStop(){
-  if(!audio.paused){
-    audio.pause();
-  }
-}
 
 // ====== 歯車設定 ======
 const G = {
@@ -242,7 +228,7 @@ canvas.addEventListener('pointerdown', (ev) => {
   canvas.setPointerCapture(ev.pointerId);
   const {x,y} = pointerPos(ev);
   if(hitSmallGear(x,y)){
-    audioStart();
+
     setDragging(true);
 
     lastPointerAng = Math.atan2(y - G.small.y, x - G.small.x);
@@ -305,13 +291,7 @@ function update(){
   G.mid.angle   += G.mid.w   * dt;
   G.big.angle   += G.big.w   * dt;
 
-  if(anyRotating()){
-    const sp = clamp(0.9 + Math.abs(G.small.w) * 0.03, 0.9, 1.2);
-    audio.playbackRate = sp;
-    audioStart();
-  }else{
-    audioStop();
-  }
+
 
 const STOP_EPS = 0.03; // この値を上げると「止まった扱い」が早くなる
 
