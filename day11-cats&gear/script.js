@@ -183,9 +183,25 @@ function drawCat(cat){
 }
 
 function updateCatAnim(cat, dt, speed){
-  const base = 3.5;
-  const gain = 9.0;
-  cat.fps = clamp(base + gain * (speed / 6.0), 3.5, 14.0);
+  // speed: rad/s（絶対値でOK）
+  // 「どのくらい回したら最大に近いか」を決める基準
+  const SPEED_REF = 10.0; // ← 小さくすると少し回すだけで速くなる
+
+  // 0〜1に正規化
+  const s = clamp(speed / SPEED_REF, 0, 1);
+
+  // カーブ（連動感を強める）：1.8〜3.0くらいが気持ちいい
+  const curve = 1.8;
+  const t = Math.pow(s, curve);
+
+  // fpsレンジ（ここが歩きの速さ）
+  const FPS_MIN = 0.0;   // 0なら完全停止（止めたくないなら 3 とか）
+  const FPS_MAX = 40.0;  // 速くしたいなら上げる
+
+  cat.fps = FPS_MIN + (FPS_MAX - FPS_MIN) * t;
+
+  // speedが小さいときは止める（カクつき防止）
+  if(cat.fps < 0.2) return;
 
   cat.acc += dt * cat.fps;
   while(cat.acc >= 1){
@@ -193,6 +209,7 @@ function updateCatAnim(cat, dt, speed){
     cat.idx = (cat.idx + 1) % cat.frames.length;
   }
 }
+
 
 // ====== 入力：小歯車を押しながら回す ======
 let dragging = false;
