@@ -1,0 +1,64 @@
+*{ box-sizing: border-box; }
+
+html, body{
+  height: 100%;
+  margin: 0;
+}
+
+body{
+  overflow: hidden;
+  background: #f7f7fb;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+/* canvasは背面 */
+#game{
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  background-color: rgb(48, 48, 187);
+}
+
+/* タイトルは前面 */
+#titleScreen{
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: clamp(16px, 4vw, 40px);
+  background: #f7f7fb;
+}
+
+#titleScreen .titleLogo{
+  width: min(720px, 92vw);
+  height: auto;
+  margin-top: clamp(4px, 2vw, 16px);
+}
+
+#btnStart{
+  margin-top: auto;
+  margin-bottom: auto;
+
+  padding: 18px 34px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+
+  font-size: clamp(18px, 2.4vw, 26px);
+  font-weight: 800;
+  letter-spacing: .06em;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.titleCat{
+  width: 50px;
+  height: auto;
+}
