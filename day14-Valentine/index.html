@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valentine Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <section id="screen-title" class="screen active">
+    <div class="title-wrap">
+      <img class="title-img" src="images/title.webp" alt="タイトル" />
+      <img class="player-preview" src="images/1.webp" alt="プレイヤー" />
+      <p class="title-hint">操作: ← → キーで主人公を動かす</p>
+      <button id="toPlayIntroBtn" class="img-button" type="button" aria-label="スタート">
+        <img src="images/btn_start.webp" alt="スタート" />
+      </button>
+    </div>
+  </section>
+
+  <section id="screen-play-intro" class="screen">
+    <p class="play-text">女子が落としたハンカチを拾って好感度を稼ごう！</p>
+    <button id="startPlayBtn" class="text-button" type="button">スタート</button>
+  </section>
+
+  <section id="screen-playing" class="screen">
+    <div class="play-stage">
+      <canvas id="gameCanvas" width="1280" height="720"></canvas>
+    </div>
+  </section>
+
+  <section id="screen-play-end" class="screen">
+    <p class="play-text">終了！</p>
+    <button id="toResultBtn" class="text-button" type="button">結果をみる</button>
+  </section>
+
+  <section id="screen-result" class="screen result-screen">
+    <div id="resultLines" class="result-lines"></div>
+    <button id="resultBackBtn" class="img-button" type="button" aria-label="タイトルに戻る">
+      <img src="images/back_to_title.webp" alt="タイトルに戻る" />
+    </button>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
