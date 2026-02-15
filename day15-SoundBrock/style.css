@@ -1,0 +1,135 @@
+﻿:root {
+  --black: #000000;
+  --white: #ffffff;
+  --soft: #b6b6b6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--black);
+  color: var(--white);
+  font-family: "Consolas", "SFMono-Regular", "Menlo", "Monaco", monospace;
+  letter-spacing: 0.02em;
+}
+
+.game-shell {
+  width: min(94vw, 900px);
+  padding: 22px;
+  background: #050505;
+  border: 3px solid var(--white);
+  border-radius: 0;
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.title-art-wrap {
+  border: 2px solid var(--white);
+  background: #0a0a0a;
+  margin-bottom: 14px;
+  padding: 8px;
+}
+
+.title-art {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--white);
+  border-radius: 0;
+}
+
+.hint {
+  margin: 0;
+  color: var(--soft);
+  font-size: 0.95rem;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.stat {
+  border: 2px solid var(--white);
+  padding: 10px 12px;
+  background: #0b0b0b;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat span {
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+#startBtn {
+  border: 2px solid var(--white);
+  border-radius: 0;
+  background: var(--white);
+  color: var(--black);
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+#startBtn:hover,
+#startBtn:focus-visible {
+  background: var(--black);
+  color: var(--white);
+}
+
+#startBtn:focus-visible {
+  outline: 2px dashed var(--white);
+  outline-offset: 2px;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 3px solid var(--white);
+  border-radius: 0;
+  background: #080d13;
+}
+
+.hint {
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  .game-shell {
+    padding: 14px;
+  }
+
+  .hud {
+    grid-template-columns: 1fr;
+  }
+}

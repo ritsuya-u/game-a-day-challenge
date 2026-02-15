@@ -1,0 +1,37 @@
+﻿<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>day15-SoundBrock</title>
+  <link rel="stylesheet" href="style.css" />
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="game-shell">
+    <div class="title-art-wrap">
+      <img class="title-art" src="images/title.webp" alt="SoundBrock title" />
+    </div>
+
+    <header class="topbar">
+      <p class="caption">Break a block, trigger a random sound.</p>
+    </header>
+
+    <section class="hud" aria-label="game status">
+      <div class="stat">SCORE <span id="score">0</span></div>
+      <div class="stat">LIVES <span id="lives">3</span></div>
+      <button id="startBtn" type="button">START / RESTART</button>
+    </section>
+
+    <canvas id="gameCanvas" width="800" height="500"></canvas>
+    <p class="hint">操作: ← → キー / マウス / タッチ</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
