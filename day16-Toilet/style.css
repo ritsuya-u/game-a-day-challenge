@@ -1,0 +1,413 @@
+:root {
+  --bg: #dcecdf;
+  --ink: #121317;
+  --male: #1f56cc;
+  --female: #db2a3f;
+  --panel: #eff8f1;
+  --line: #101114;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 15% 10%, #ecf7ed 0%, var(--bg) 45%, #cfdfd3 100%);
+  color: var(--ink);
+  font-family: "MS Gothic", "Yu Gothic UI", monospace;
+}
+
+.app {
+  max-width: 1280px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.screen {
+  display: none;
+  min-height: calc(100vh - 32px);
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+#screen-title {
+  justify-content: center;
+  align-items: center;
+}
+
+.title-main {
+  text-align: center;
+  margin-top: 0;
+  font-size: clamp(36px, 5vw, 68px);
+  line-height: 1.3;
+}
+
+.title-main span {
+  font-size: clamp(28px, 4vw, 54px);
+}
+
+.title-people {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.title-people img {
+  width: 88px;
+  image-rendering: pixelated;
+}
+
+.btn-primary {
+  align-self: center;
+  margin-top: 24px;
+  min-width: 260px;
+  padding: 14px 28px;
+  font-size: clamp(28px, 3vw, 44px);
+  font-family: inherit;
+  font-weight: 700;
+  background: #f7fff8;
+  border: 6px solid #000;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.setup-top {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.event-info h2 {
+  margin: 0 0 10px;
+  font-size: clamp(32px, 4vw, 54px);
+}
+
+.event-info p {
+  margin: 8px 0;
+  font-size: clamp(26px, 3vw, 46px);
+}
+
+.setup-guide {
+  margin: 50px auto 10px;
+  font-size: clamp(28px, 3.2vw, 50px);
+}
+
+.toilet-setting-wrap {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.counter-box {
+  border: 4px solid transparent;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+}
+
+.counter-box.male {
+  border-color: rgba(31, 86, 204, 0.55);
+}
+
+.counter-box.female {
+  border-color: rgba(219, 42, 63, 0.55);
+}
+
+.counter-box h3 {
+  margin: 2px 0 18px;
+  font-size: clamp(34px, 4vw, 58px);
+}
+
+.counter-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.counter-btn {
+  border: none;
+  background: none;
+  font-size: clamp(42px, 4.5vw, 72px);
+  cursor: pointer;
+}
+
+.counter-box.male .counter-btn {
+  color: #2020bc;
+}
+
+.counter-box.female .counter-btn {
+  color: #ff2b3c;
+}
+
+.counter-value {
+  display: inline-block;
+  min-width: 58px;
+  font-size: clamp(64px, 7vw, 106px);
+}
+
+.setup-message {
+  text-align: center;
+  min-height: 1.4em;
+  color: #a31931;
+  font-size: 26px;
+}
+
+.hud {
+  margin: 6px 0;
+  background: rgba(239, 248, 241, 0.9);
+  border: 4px solid var(--line);
+  padding: 10px 14px;
+  width: min(560px, 95%);
+}
+
+.hud p {
+  margin: 6px 0;
+  font-size: clamp(24px, 2.8vw, 46px);
+}
+
+.play-area {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 46% 54%;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.queue-area,
+.door-area {
+  padding: 4px;
+}
+
+.queue-group h3,
+.door-group h3 {
+  margin: 0 0 8px;
+  font-size: clamp(28px, 3vw, 46px);
+}
+
+.queue-group {
+  margin-bottom: 18px;
+}
+
+.queue-row {
+  min-height: 92px;
+  padding: 8px;
+  border: 2px dashed #67746d;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.queue-count {
+  margin: 8px 0 0;
+  font-size: clamp(20px, 2.3vw, 32px);
+}
+
+.door-group {
+  margin-bottom: 18px;
+}
+
+.door-row {
+  min-height: 196px;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.door-slot {
+  position: relative;
+  width: 132px;
+  height: 186px;
+}
+
+.door-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.door-occupant {
+  position: absolute;
+  left: 50%;
+  bottom: 102px;
+  transform: translateX(-50%);
+}
+
+.npc {
+  width: 54px;
+  position: relative;
+}
+
+.npc img.sprite {
+  display: block;
+  width: 100%;
+  image-rendering: pixelated;
+}
+
+.npc.male img.sprite {
+  filter: hue-rotate(-14deg) saturate(1.1);
+}
+
+.npc.female img.sprite {
+  filter: hue-rotate(8deg) saturate(1.1);
+}
+
+.npc.state-seated {
+  opacity: 0.9;
+}
+
+.npc.state-walking {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.npc.state-waiting {
+  transform: translateY(-3px);
+}
+
+.npc.state-using {
+  transform: scale(0.95);
+}
+
+.npc.is-limit {
+  animation: wobble 0.16s infinite alternate;
+}
+
+.sweat-layer {
+  position: absolute;
+  right: -6px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+.sweat-layer::before,
+.sweat-layer::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 9px;
+  border-radius: 60% 60% 40% 40%;
+  background: #5aa4ff;
+}
+
+.sweat-layer::before {
+  left: 2px;
+  top: 1px;
+}
+
+.sweat-layer::after {
+  left: 8px;
+  top: 7px;
+}
+
+.npc.is-sweating .sweat-layer {
+  opacity: 1;
+  animation: sweatMove 0.7s linear infinite;
+}
+
+.queue-more {
+  align-self: center;
+  font-size: 28px;
+}
+
+.result-score {
+  margin: 110px 0 10px;
+  text-align: center;
+  font-size: clamp(40px, 4.5vw, 72px);
+}
+
+.result-sub,
+.result-comment-title,
+.result-comment {
+  text-align: center;
+  font-size: clamp(24px, 2.8vw, 44px);
+  margin: 8px 0;
+}
+
+.result-comment {
+  margin-top: 22px;
+}
+
+#result-title {
+  text-align: center;
+  margin-top: 56px;
+  font-size: clamp(36px, 4vw, 66px);
+}
+
+#back-title {
+  margin-top: 28px;
+}
+
+#screen-result.failed-layout {
+  justify-content: center;
+  align-items: center;
+}
+
+#screen-result.failed-layout #result-title,
+#screen-result.failed-layout .result-comment-title,
+#screen-result.failed-layout .result-comment,
+#screen-result.failed-layout #back-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+@keyframes wobble {
+  from {
+    transform: translate(-1px, 0);
+  }
+  to {
+    transform: translate(1px, 0);
+  }
+}
+
+@keyframes sweatMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(3px);
+  }
+}
+
+@media (max-width: 980px) {
+  .setup-top {
+    flex-direction: column;
+  }
+
+  .toilet-setting-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .play-area {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .hud {
+    width: 100%;
+  }
+
+  .door-slot {
+    width: 108px;
+    height: 156px;
+  }
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>ニ。ー 人間の尊厳について ー</title>
+  <link rel="stylesheet" href="./style.css">
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <section id="screen-title" class="screen active">
+      <h1 class="title-main">ニ。<br><span>ー 人間の尊厳について ー</span></h1>
+      <div class="title-people">
+        <img src="./images/male.png" alt="male">
+        <img src="./images/female.png" alt="female">
+      </div>
+      <button id="start-button" class="btn-primary">はじめる</button>
+    </section>
+
+    <section id="screen-setup" class="screen">
+      <div class="setup-top">
+        <div class="event-info">
+          <h2>今回のイベント情報：</h2>
+          <p>推定来場者数：<span id="info-visitors">0</span>人</p>
+          <p>推定男女比：男<span id="info-male-ratio">0</span>%、女<span id="info-female-ratio">0</span>%</p>
+          <p>開催時間：<span id="info-duration">0</span>秒</p>
+        </div>
+        <button id="begin-event" class="btn-primary">イベント開始</button>
+      </div>
+
+      <p class="setup-guide">トイレの数を決めてください（合計最大10基）</p>
+      <div class="toilet-setting-wrap">
+        <div class="counter-box male">
+          <h3>男子トイレ</h3>
+          <div class="counter-line">
+            <button class="counter-btn" data-target="male" data-step="-1">◀</button>
+            <span id="male-count" class="counter-value">1</span>
+            <button class="counter-btn" data-target="male" data-step="1">▶</button>
+          </div>
+        </div>
+        <div class="counter-box female">
+          <h3>女子トイレ</h3>
+          <div class="counter-line">
+            <button class="counter-btn" data-target="female" data-step="-1">◀</button>
+            <span id="female-count" class="counter-value">1</span>
+            <button class="counter-btn" data-target="female" data-step="1">▶</button>
+          </div>
+        </div>
+      </div>
+      <p id="setup-message" class="setup-message"></p>
+    </section>
+
+    <section id="screen-play" class="screen">
+      <div class="hud">
+        <p>残り時間：<span id="hud-time">0:00</span></p>
+        <p>来場人数：<span id="hud-visitors">0</span>人</p>
+        <p>男女比：男<span id="hud-male-ratio">0</span>%、女<span id="hud-female-ratio">0</span>%</p>
+        <p>漏れ人数：<span id="hud-fail">0</span>人</p>
+        <p>平均待ち時間：<span id="hud-wait">0.0</span>秒</p>
+      </div>
+
+      <div class="play-area">
+        <div class="queue-area">
+          <div class="queue-group">
+            <h3>男子待機列</h3>
+            <div id="queue-male" class="queue-row"></div>
+            <p class="queue-count">並び人数：<span id="queue-male-count">0</span>人</p>
+          </div>
+          <div class="queue-group">
+            <h3>女子待機列</h3>
+            <div id="queue-female" class="queue-row"></div>
+            <p class="queue-count">並び人数：<span id="queue-female-count">0</span>人</p>
+          </div>
+        </div>
+
+        <div class="door-area">
+          <div class="door-group">
+            <h3>男子トイレ</h3>
+            <div id="doors-male" class="door-row"></div>
+          </div>
+          <div class="door-group">
+            <h3>女子トイレ</h3>
+            <div id="doors-female" class="door-row"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen-result" class="screen">
+      <h2 id="result-title">結果</h2>
+      <p id="result-score-line" class="result-score">トイレ稼働率：<span id="result-rate">0</span>%</p>
+      <p id="result-util-line" class="result-sub">男子稼働率：<span id="result-male-rate">0.0</span>% / 女子稼働率：<span id="result-female-rate">0.0</span>%</p>
+      <p id="result-ref-line" class="result-sub">漏れ人数：<span id="result-fail">0</span>人 / 平均待ち時間：<span id="result-wait">0.0</span>秒</p>
+      <p class="result-comment-title">マネージャーからのコメント：</p>
+      <p id="result-comment" class="result-comment"></p>
+      <button id="back-title" class="btn-primary">タイトルに戻る</button>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
