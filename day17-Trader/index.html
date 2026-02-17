@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day17 Trader</title>
+  <link rel="stylesheet" href="style.css" />
+     <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <section id="titleScreen" class="screen active">
+      <img class="titleLogo" src="images/title.png" alt="Trader" />
+      <button id="startButton" class="startButton">取引開始</button>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <header class="topBar">
+        <span id="timeDisplay" class="timer">01:00</span>
+      </header>
+
+      <section class="priceSection">
+        <p class="headline">価格：<span id="priceDisplay">¥10,000</span></p>
+        <div class="separator"></div>
+      </section>
+
+      <section class="chartWrap">
+        <canvas id="priceChart" width="1000" height="320" aria-label="価格チャート"></canvas>
+      </section>
+
+      <div class="separator"></div>
+
+      <section class="tradePanel">
+        <div class="statusRow">
+          <p class="headline">所持金：<span id="cashDisplay">¥1,000,000</span></p>
+          <p class="headline">保有株式数：<span id="amountDisplay">0株</span></p>
+        </div>
+
+        <div class="controlRow">
+          <div class="qtyBox">
+            <input id="qtyInput" type="number" min="1" step="1" value="1" />
+            <span>株</span>
+          </div>
+          <button id="buyButton" class="tradeButton buy">購入</button>
+          <button id="sellButton" class="tradeButton sell">売却</button>
+        </div>
+
+        <p id="message" class="message"></p>
+      </section>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <h2 class="resultTitle">Result</h2>
+      <p class="headline">最終現金（スコア）：<span id="finalCash">¥0</span></p>
+      <p class="headline">利益率：<span id="profitRate">0.00%</span></p>
+      <p class="headline">上司からのコメント</p>
+      <p id="bossComment" class="bossComment">-</p>
+      <div class="resultActions">
+        <button id="retryButton" class="startButton">再挑戦</button>
+        <button id="titleButton" class="startButton">タイトルへ</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
