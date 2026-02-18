@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day18 給水機の怠慢</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <section id="titleScreen" class="screen active">
+      <img class="titleLogo" src="images/title.png" alt="給水機の怠慢" />
+      <img class="titleCup" src="images/cup.png" alt="コップ" />
+      <button id="startButton" class="boxButton">給水する</button>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <section class="canvasWrap">
+        <canvas id="gameCanvas" width="420" height="640" aria-label="給水ゲーム画面"></canvas>
+      </section>
+
+      <p class="playGuide">ボタンを押している間だけ水がでます。</p>
+      <button id="pourButton" class="boxButton pour">給水</button>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <h2 id="resultTitle">結果</h2>
+      <p>目標水位: <span id="resultTarget">0%</span></p>
+      <p>実際水位: <span id="resultActual">0%</span></p>
+      <p>誤差: <span id="resultError">0%</span></p>
+      <p>スコア: <span id="resultScore">0</span></p>
+      <p>友達からのコメント</p>
+      <p id="resultComment" class="resultComment">-</p>
+
+      <div class="resultActions">
+        <button id="primaryButton" class="boxButton">もう一度</button>
+        <button id="secondaryButton" class="boxButton">タイトルへ</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
