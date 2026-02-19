@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day19 一瞬のペンギン</title>
+  <link rel="stylesheet" href="style.css" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PL9KM0FWX');
+  </script>
+</head>
+<body>
+  <main class="app">
+    <section id="titleScreen" class="screen active">
+      <img class="titleLogo" src="images/title.png" alt="ワンチャンペンギン" />
+      <img class="titlePengin" src="images/pengin.png" alt="ペンギン" />
+      <button id="startButton" class="boxButton">写真をとる</button>
+    </section>
+
+    <section id="playScreen" class="screen">
+      <div class="cameraWrap">
+        <div id="cameraFrame" class="cameraFrame">
+          <img id="playPengin" class="pengin" src="images/pengin.png" alt="泳ぐペンギン" />
+          <div class="crosshair" aria-hidden="true"></div>
+          <div class="frameOverlay" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="playActions">
+        <button id="shutterButton" class="boxButton">撮影</button>
+        <button id="toResultButton" class="boxButton hidden">結果を見る</button>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <h1 class="resultTitle">結果</h1>
+      <div class="resultShotFrame">
+        <div id="resultShot" class="resultShot">
+          <img id="resultPengin" class="pengin" src="images/pengin.png" alt="撮影したペンギン" />
+        </div>
+      </div>
+      <p class="likes">いいね数：<span id="likesValue">0</span></p>
+      <button id="backTitleButton" class="boxButton">タイトルに戻る</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

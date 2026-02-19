@@ -1,0 +1,207 @@
+:root {
+  --sea: #2f8bc3;
+  --line: #eef6ff;
+  --text: #eef6ff;
+  --button-bg: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 15%, #42a0d9 0%, var(--sea) 52%, #2679ab 100%);
+  color: var(--text);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
+}
+
+.app {
+  width: min(980px, 94vw);
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  align-content: center;
+  justify-items: center;
+  gap: 34px;
+  padding: 24px 0;
+}
+
+.screen.active {
+  display: grid;
+}
+
+.titleLogo {
+  width: min(430px, 78vw);
+  height: auto;
+  object-fit: contain;
+}
+
+.titlePengin {
+  width: min(300px, 66vw);
+  height: auto;
+  object-fit: contain;
+}
+
+.cameraWrap,
+.resultShotFrame {
+  width: min(700px, 88vw);
+}
+
+.cameraFrame,
+.resultShot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 6px solid var(--line);
+  overflow: hidden;
+}
+
+.cameraFrame::before,
+.cameraFrame::after,
+.frameOverlay::before,
+.frameOverlay::after {
+  content: "";
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  pointer-events: none;
+}
+
+.cameraFrame::before {
+  top: -32px;
+  left: -32px;
+  border-top: 5px solid var(--line);
+  border-left: 5px solid var(--line);
+}
+
+.cameraFrame::after {
+  top: -32px;
+  right: -32px;
+  border-top: 5px solid var(--line);
+  border-right: 5px solid var(--line);
+}
+
+.frameOverlay::before {
+  bottom: -32px;
+  left: -32px;
+  border-bottom: 5px solid var(--line);
+  border-left: 5px solid var(--line);
+}
+
+.frameOverlay::after {
+  bottom: -32px;
+  right: -32px;
+  border-bottom: 5px solid var(--line);
+  border-right: 5px solid var(--line);
+}
+
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  transform: translate(-50%, -50%);
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: "";
+  position: absolute;
+  background: var(--line);
+}
+
+.crosshair::before {
+  width: 100%;
+  height: 4px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.crosshair::after {
+  width: 4px;
+  height: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.pengin {
+  position: absolute;
+  top: 50%;
+  width: clamp(160px, 36%, 270px);
+  transform: translateY(-50%);
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.likes {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+.playActions {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.resultTitle {
+  margin: 0;
+  font-size: clamp(3rem, 8vw, 5rem);
+  letter-spacing: 0.08em;
+}
+
+.boxButton {
+  min-width: 280px;
+  min-height: 96px;
+  border: 8px solid var(--line);
+  background: var(--button-bg);
+  color: var(--text);
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boxButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .screen {
+    gap: 24px;
+  }
+
+  .likes {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .boxButton {
+    min-width: 220px;
+    min-height: 78px;
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+    border-width: 6px;
+  }
+
+  .cameraFrame::before,
+  .cameraFrame::after,
+  .frameOverlay::before,
+  .frameOverlay::after {
+    width: 54px;
+    height: 54px;
+  }
+}
