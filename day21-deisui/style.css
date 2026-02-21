@@ -1,0 +1,182 @@
+:root {
+  --bg: #000000;
+  --line: #f1f1f1;
+  --yellow: #ffd400;
+  --pink: #ff3b57;
+  --text: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic UI", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 18%, #0f0f0f 0%, #000 62%);
+}
+
+#gameCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: clamp(18px, 3.2vh, 30px);
+  text-align: center;
+  padding: 20px;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.title-logo {
+  width: min(58vw, 330px);
+  max-width: 88%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(255, 255, 255, 0.12));
+}
+
+.smile-face {
+  position: relative;
+  width: clamp(56px, 9vw, 90px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: inset -10px -8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.eye {
+  position: absolute;
+  width: 12%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #181818;
+  top: 34%;
+}
+
+.eye-left {
+  left: 31%;
+}
+
+.eye-right {
+  right: 31%;
+}
+
+.mouth {
+  position: absolute;
+  width: 38%;
+  height: 22%;
+  left: 31%;
+  bottom: 25%;
+  border: 3px solid #181818;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0 0 100px 100px;
+}
+
+.main-button,
+.sub-button {
+  border: 4px solid var(--line);
+  color: var(--text);
+  background: transparent;
+  padding: 14px 38px;
+  font-size: clamp(24px, 3.8vw, 42px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.main-button:active,
+.sub-button:active {
+  transform: scale(0.98);
+}
+
+.sub-button {
+  font-size: clamp(18px, 2.6vw, 28px);
+  padding: 10px 30px;
+  border-width: 2px;
+}
+
+#hud {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+#hud.active {
+  display: flex;
+}
+
+.hud-item {
+  border: 2px solid var(--line);
+  background: rgba(0, 0, 0, 0.45);
+  padding: 6px 10px;
+  font-size: clamp(12px, 2vw, 18px);
+  letter-spacing: 0.06em;
+}
+
+#resultScreen {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+}
+
+#resultTitle {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 58px);
+  letter-spacing: 0.08em;
+}
+
+.result-line {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 38px);
+}
+
+.result-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 720px) {
+  .main-button {
+    border-width: 3px;
+    padding: 10px 28px;
+  }
+
+  #hud {
+    top: env(safe-area-inset-top, 8px);
+    width: calc(100% - 12px);
+  }
+}

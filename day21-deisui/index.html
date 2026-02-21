@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>泥酔ロード</title>
+  <link rel="stylesheet" href="style.css" />
+   <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main id="app">
+    <canvas id="gameCanvas" aria-label="泥酔ロード ゲーム画面"></canvas>
+
+    <section id="titleScreen" class="screen active" aria-label="タイトル画面">
+      <img class="title-logo" src="images/title.png" alt="泥酔" />
+      <div class="smile-face" aria-hidden="true">
+        <span class="eye eye-left"></span>
+        <span class="eye eye-right"></span>
+        <span class="mouth"></span>
+      </div>
+      <button id="startButton" class="main-button">酔い歩く</button>
+    </section>
+
+    <section id="hud" aria-live="polite" aria-label="プレイ情報">
+      <div class="hud-item">距離: <span id="distanceValue">0</span>m</div>
+      <div class="hud-item">衝突: <span id="hitsValue">0</span>/4</div>
+    </section>
+
+    <section id="resultScreen" class="screen" aria-label="リザルト画面">
+      <h1 id="resultTitle">結果</h1>
+      <p class="result-line">進んだ距離: <strong><span id="resultDistance">0</span>m</strong></p>
+      <div class="result-actions">
+        <button id="retryButton" class="main-button">もう一度</button>
+        <button id="titleButton" class="sub-button">タイトルへ</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
