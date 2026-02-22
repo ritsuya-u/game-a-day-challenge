@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gyro Lab</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hud">
+    <div class="title">Gyro Lab</div>
+
+    <div class="row">
+      <button id="btnStart">センサー開始</button>
+      <button id="btnReset">リセット</button>
+    </div>
+
+    <div class="status" id="status">
+      スマホ：傾けて操作 / PC：ドラッグで傾き代用
+    </div>
+
+    <div class="small" id="debug"></div>
+  </div>
+
+  <canvas id="cv"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
