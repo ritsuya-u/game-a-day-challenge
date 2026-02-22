@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>月がきれいであってほしい</title>
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <section id="screen-title" class="screen is-active">
+      <img class="title-logo" src="images/title.webp" alt="月がきれいであってほしい">
+      <img class="couple" src="images/couple.webp" alt="カップル">
+      <button id="start-btn" class="main-btn">告る</button>
+    </section>
+
+    <section id="screen-opening" class="screen">
+      <div id="opening-line" class="line"></div>
+      <img class="couple bottom" src="images/couple.webp" alt="カップル">
+    </section>
+
+    <section id="screen-play" class="screen">
+      <p class="guide">円をかいて！</p>
+      <canvas id="draw-canvas" aria-label="円を描くキャンバス"></canvas>
+      <img class="couple bottom" src="images/couple.webp" alt="カップル">
+    </section>
+
+    <section id="screen-result" class="screen">
+      <div class="result-wrap">
+        <canvas id="moon-canvas" class="moon-canvas" aria-label="描いた月"></canvas>
+        <p class="quote">「月がきれいですね」</p>
+        <p id="reply" class="reply"></p>
+        <p id="score" class="score"></p>
+      </div>
+      <img class="couple bottom" src="images/couple.webp" alt="カップル">
+      <button id="retry-btn" class="sub-btn">タイトルへ</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

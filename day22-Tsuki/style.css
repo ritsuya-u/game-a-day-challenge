@@ -1,0 +1,205 @@
+:root {
+  --bg: #8480a0;
+  --text: #0b0b0f;
+  --moon: #f8c304;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3vh 5vw;
+  background: var(--bg);
+}
+
+.screen.is-active {
+  display: flex;
+}
+
+#screen-result {
+  transform: translateY(clamp(-48px, -5vh, -24px));
+}
+
+.title-logo {
+  width: min(52vw, 470px);
+  max-width: 90%;
+  object-fit: contain;
+  margin-bottom: 40px;
+}
+
+.couple {
+  width: min(28vw, 250px);
+  max-width: 54%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.couple.bottom {
+  position: absolute;
+  bottom: clamp(50px, 9vh, 100px);
+}
+
+.main-btn,
+.sub-btn {
+  margin-top: 46px;
+  width: 220px;
+  max-width: 70vw;
+  height: 84px;
+  border: 3px solid #070709;
+  background: transparent;
+  color: #070709;
+  font-size: clamp(1.1rem, 2vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sub-btn {
+  width: 170px;
+  height: 64px;
+  margin-top: 24px;
+  font-size: clamp(0.8rem, 1.35vw, 1.2rem);
+  border-width: 3px;
+}
+
+#screen-result .couple.bottom {
+  bottom: clamp(92px, 15vh, 160px);
+}
+
+#screen-result .sub-btn {
+  position: absolute;
+  bottom: clamp(18px, 4vh, 36px);
+  margin-top: 0;
+}
+
+.line {
+  text-align: center;
+  font-size: clamp(1.15rem, 2.7vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  opacity: 0;
+  transition: opacity 520ms ease;
+}
+
+.line.show {
+  opacity: 1;
+}
+
+.guide {
+  position: absolute;
+  top: clamp(44px, 9vh, 90px);
+  margin: 0;
+  font-size: clamp(1.2rem, 2.9vw, 2.8rem);
+  font-weight: 800;
+}
+
+#draw-canvas {
+  width: min(74vw, 900px);
+  height: min(58vh, 560px);
+  max-width: 95%;
+  max-height: 68%;
+  touch-action: none;
+}
+
+.result-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 150px;
+}
+
+.result-wrap.success .moon-canvas {
+  animation: moon-glow 900ms ease-in-out 2 alternate;
+}
+
+.moon-canvas {
+  width: clamp(140px, 18vw, 220px);
+  height: clamp(140px, 18vw, 220px);
+  margin-bottom: 26px;
+}
+
+.quote {
+  margin: 0 0 12px;
+  font-size: clamp(1.25rem, 2.85vw, 2.7rem);
+  font-weight: 800;
+  text-align: center;
+}
+
+.reply {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.6vw, 2.45rem);
+  font-weight: 800;
+  text-align: center;
+}
+
+.score {
+  margin: 24px 0 0;
+  font-size: clamp(1.05rem, 1.75vw, 1.8rem);
+  font-weight: 700;
+}
+
+@keyframes moon-glow {
+  from {
+    filter: drop-shadow(0 0 0 rgba(248, 195, 4, 0));
+    transform: scale(1);
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(248, 195, 4, 0.85));
+    transform: scale(1.04);
+  }
+}
+
+@media (max-width: 900px) {
+  .title-logo {
+    width: min(72vw, 470px);
+  }
+
+  .main-btn {
+    width: 198px;
+    height: 74px;
+    border-width: 3px;
+    font-size: clamp(1.05rem, 4vw, 1.45rem);
+  }
+
+  #draw-canvas {
+    width: min(88vw, 860px);
+    height: min(56vh, 530px);
+  }
+
+  .quote {
+    font-size: clamp(0.95rem, 4.3vw, 1.7rem);
+  }
+
+  .reply {
+    font-size: clamp(0.85rem, 3.6vw, 1.45rem);
+  }
+
+  .score {
+    font-size: clamp(0.75rem, 3vw, 1.25rem);
+  }
+}
