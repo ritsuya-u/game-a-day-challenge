@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>圧迫しりとり</title>
+  <link rel="stylesheet" href="style.css" />
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <h1 class="title">圧迫しりとり</h1>
+
+    <div class="face-wrap" aria-hidden="true">
+      <div id="face" class="face">
+        <div class="sheen"></div>
+        <div class="brow left"></div>
+        <div class="brow right"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="mouth"></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div id="status" class="status">最初の単語を入力してください（2文字以上）</div>
+
+    <section id="log" class="log" aria-label="チャットログ"></section>
+
+    <form id="form" class="input-row" autocomplete="off">
+      <input id="input" name="word" type="text" placeholder="単語を入力" maxlength="30" />
+      <button id="submit" type="submit">送信</button>
+    </form>
+
+    <div class="footer">
+      <div id="result" class="result"></div>
+      <div id="turnInfo">総ターン数: 0</div>
+    </div>
+  </main>
+
+  <script src="vocabulary.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
