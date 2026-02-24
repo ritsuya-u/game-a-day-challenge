@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>花粉の大冒険</title>
+  <link rel="stylesheet" href="style.css" />
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <section id="title-screen" class="screen active" aria-label="タイトル画面">
+      <img id="title-logo" class="title-logo" src="images/title.png" alt="花粉の大冒険" />
+      <img id="title-kahun" class="title-kahun" src="images/kahun.png" alt="花粉" />
+      <button id="start-button" class="game-button">冒険する</button>
+    </section>
+
+    <section id="play-screen" class="screen" aria-label="プレイ画面">
+      <div class="hud">
+        <p id="timer">0:30</p>
+      </div>
+      <div class="playfield-wrap">
+        <canvas id="game-canvas" aria-label="ゲーム画面"></canvas>
+      </div>
+      <div class="floor-bar"></div>
+    </section>
+
+    <section id="result-screen" class="screen" aria-label="リザルト画面">
+      <h1 class="result-title">リザルト</h1>
+      <p id="result-text" class="result-text">くしゃみ0連発</p>
+      <button id="back-button" class="game-button">タイトルへ</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

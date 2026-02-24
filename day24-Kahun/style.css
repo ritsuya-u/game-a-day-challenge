@@ -1,0 +1,137 @@
+:root {
+  --pink: #ee9298;
+  --skin: #eccfaa;
+  --goal: #50a9df;
+  --black: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+  background: var(--pink);
+  color: var(--black);
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+}
+
+.screen.active {
+  display: flex;
+}
+
+#title-screen,
+#result-screen {
+  background: var(--pink);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 3vh, 36px);
+}
+
+.title-logo {
+  width: min(62vw, 560px);
+  max-width: 92vw;
+  object-fit: contain;
+}
+
+.title-kahun {
+  width: min(10vw, 96px);
+  min-width: 56px;
+  object-fit: contain;
+}
+
+.game-button {
+  min-width: min(46vw, 280px);
+  padding: 14px 30px;
+  border: 8px solid #000;
+  background: #f6a8af;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1.1;
+}
+
+.game-button:active {
+  transform: translateY(2px);
+}
+
+#play-screen {
+  flex-direction: column;
+  background: var(--skin);
+}
+
+.hud,
+.floor-bar {
+  height: 24vh;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hud {
+  border-bottom: 6px solid #000;
+}
+
+.floor-bar {
+  border-top: 6px solid #000;
+}
+
+#timer {
+  margin: 0;
+  font-size: clamp(56px, 11vw, 118px);
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.playfield-wrap {
+  flex: 1;
+  min-height: 200px;
+  background: var(--pink);
+}
+
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.result-title {
+  margin: 0;
+  font-size: clamp(42px, 6vw, 84px);
+}
+
+.result-text {
+  margin: 8vh 0 10vh;
+  font-size: clamp(44px, 7vw, 100px);
+  font-weight: 900;
+}
+
+@media (max-width: 700px) {
+  .game-button {
+    border-width: 5px;
+    font-size: clamp(24px, 8vw, 38px);
+  }
+
+  .title-logo {
+    width: min(90vw, 540px);
+  }
+}
