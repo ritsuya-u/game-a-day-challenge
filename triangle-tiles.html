@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Triangle Tiles</title>
+    <style>
+      :root {
+        --bg: #f4f6fb;
+        --line: #ccd3e0;
+        --ink: #162033;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        font-family: "Yu Gothic UI", "Meiryo", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+      }
+
+      p {
+        margin: 0 0 16px;
+      }
+
+      .board {
+        border: 2px solid var(--line);
+        border-radius: 10px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .palette {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 14px;
+      }
+
+      .swatch {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        border: 2px solid #cfd7e6;
+        cursor: pointer;
+      }
+
+      .swatch.active {
+        border-color: #20293f;
+        transform: scale(1.08);
+      }
+
+      #customColor {
+        width: 40px;
+        height: 32px;
+        border: 1px solid #cfd7e6;
+        border-radius: 7px;
+        padding: 0;
+        background: #fff;
+        cursor: pointer;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      polygon.tile {
+        fill: #ffffff;
+        stroke: var(--line);
+        stroke-width: 1.2;
+        cursor: pointer;
+        transition: fill 120ms ease;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>正三角形タイル</h1>
+      <p>三角形をクリックすると色が付きます（再クリックで戻る）。</p>
+      <div class="palette" id="paletteBar">
+        <span>色:</span>
+      </div>
+      <div class="board">
+        <svg id="triGrid" aria-label="triangle grid"></svg>
+      </div>
+    </main>
+
+    <script>
+      const svg = document.getElementById("triGrid");
+      const cols = 28;
+      const rows = 16;
+      const side = 36;
+      const triH = side * Math.sqrt(3) / 2;
+      const width = (cols + 1) * side / 2;
+      const height = rows * triH;
+      const palette = ["#ff6b6b", "#ffd166", "#06d6a0", "#118ab2", "#9b5de5", "#f15bb5", "#90be6d"];
+      const paletteBar = document.getElementById("paletteBar");
+      let selectedColor = palette[0];
+
+      svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+
+      function setActiveSwatch(color) {
+        const swatches = paletteBar.querySelectorAll(".swatch");
+        swatches.forEach((el) => {
+          el.classList.toggle("active", el.dataset.color === color);
+        });
+      }
+
+      for (const color of palette) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "swatch";
+        btn.style.background = color;
+        btn.dataset.color = color;
+        btn.title = color;
+        btn.addEventListener("click", () => {
+          selectedColor = color;
+          setActiveSwatch(color);
+          customColor.value = color;
+        });
+        paletteBar.appendChild(btn);
+      }
+
+      const customColor = document.createElement("input");
+      customColor.type = "color";
+      customColor.id = "customColor";
+      customColor.value = selectedColor;
+      customColor.title = "カスタム色";
+      customColor.addEventListener("input", () => {
+        selectedColor = customColor.value;
+        setActiveSwatch("");
+      });
+      paletteBar.appendChild(customColor);
+      setActiveSwatch(selectedColor);
+
+      function pointsFor(col, row) {
+        const x = col * side / 2;
+        const y = row * triH;
+        const up = (col + row) % 2 === 0;
+        if (up) {
+          return `${x},${y + triH} ${x + side / 2},${y} ${x + side},${y + triH}`;
+        }
+        return `${x},${y} ${x + side},${y} ${x + side / 2},${y + triH}`;
+      }
+
+      for (let row = 0; row < rows; row += 1) {
+        for (let col = 0; col < cols; col += 1) {
+          const tile = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+          tile.setAttribute("class", "tile");
+          tile.setAttribute("points", pointsFor(col, row));
+          tile.dataset.filled = "0";
+          tile.addEventListener("click", () => {
+            if (tile.dataset.filled === "1") {
+              tile.dataset.filled = "0";
+              tile.style.fill = "#ffffff";
+              return;
+            }
+            tile.dataset.filled = "1";
+            tile.style.fill = selectedColor;
+          });
+          svg.appendChild(tile);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TriTes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="layout">
+    <section class="game">
+      <h1>TriTes</h1>
+      <canvas id="board" width="480" height="720" aria-label="TriTes board"></canvas>
+      <div class="controls">
+        <button id="leftBtn" type="button">←</button>
+        <button id="downBtn" type="button">↓</button>
+        <button id="rightBtn" type="button">→</button>
+        <button id="rotLBtn" type="button">Z</button>
+        <button id="rotRBtn" type="button">X</button>
+      </div>
+    </section>
+    <aside class="panel">
+      <p><span>Score</span><strong id="score">0</strong></p>
+      <p><span>Lines</span><strong id="lines">0</strong></p>
+      <p><span>Level</span><strong id="level">1</strong></p>
+      <button id="restartBtn" type="button">Restart</button>
+      <div class="help">
+        <p>Key: ← → ↓</p>
+        <p>Rotate: Z / X</p>
+        <p>Space: Hard Drop</p>
+      </div>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
