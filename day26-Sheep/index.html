@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Sheep No Sleep</title>
+  <link rel="stylesheet" href="style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
+</head>
+<body>
+  <main class="app">
+    <section id="titleScreen" class="screen">
+      <img class="title-logo" src="images/title.png" alt="No Sheep No Sleep">
+      <img class="title-sheep" src="images/sheep.png" alt="Sheep">
+      <button id="startBtn" class="main-btn" type="button">入眠する</button>
+    </section>
+
+    <section id="playScreen" class="screen hidden">
+      <header class="hud">
+        <div class="hud-row">
+          <span class="timer" id="remainTime">30</span>
+        </div>
+      </header>
+      <canvas id="game" width="960" height="540" aria-label="Sheep field"></canvas>
+    </section>
+
+    <section id="resultScreen" class="screen hidden">
+      <h1 class="result-title">リザルト</h1>
+      <p id="resultText" class="result-text">0時間睡眠</p>
+      <button id="backTitleBtn" class="main-btn" type="button">タイトルへ</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
