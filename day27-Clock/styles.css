@@ -1,0 +1,119 @@
+:root {
+  color-scheme: dark;
+  --bg: #020202;
+  --fg: #f4f4f4;
+  --accent: #ffc857;
+  --accent-2: #5ad6ff;
+  --danger: #ff5d73;
+  --panel-border: rgba(255, 255, 255, 0.16);
+  --panel-bg: rgba(255, 255, 255, 0.04);
+  --overlay-border: rgba(255, 255, 255, 0.14);
+  --overlay-bg: rgba(10, 10, 10, 0.92);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at center, rgba(255, 200, 87, 0.08), transparent 20%),
+    radial-gradient(circle at top, rgba(90, 214, 255, 0.08), transparent 28%),
+    var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", "Yu Gothic UI", sans-serif;
+  overflow: hidden;
+}
+
+main {
+  width: min(100vw, 920px);
+  padding: 28px 16px 24px;
+  position: relative;
+}
+
+.scoreboard {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  z-index: 1;
+}
+
+canvas {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  border-radius: 24px;
+  background: transparent;
+  touch-action: none;
+}
+
+.score-value {
+  min-width: 120px;
+  text-align: right;
+  font-size: clamp(56px, 9vw, 86px);
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.staged-value {
+  min-width: 72px;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1;
+  font-weight: 700;
+  opacity: 0.92;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.78);
+  text-align: center;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.overlay-card {
+  max-width: 480px;
+  padding: 28px;
+  border: 1px solid var(--overlay-border);
+  border-radius: 24px;
+  background: var(--overlay-bg);
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 16px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #ff8f3f);
+  color: #111;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}

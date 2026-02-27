@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clock Defense</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <section class="scoreboard" aria-label="score display">
+      <strong class="score-value" id="score">0</strong>
+      <strong class="staged-value" id="staged">+0</strong>
+    </section>
+    <canvas id="game" width="960" height="960"></canvas>
+  </main>
+
+  <section class="overlay" id="overlay">
+    <div class="overlay-card">
+      <h1>Clock Defense</h1>
+      <p>時計の長針を回して狙いを調整し、敵の前進速度に時間操作を上乗せしながら迎撃します。</p>
+      <p>弾は自動発射で巻き戻らず、敵だけが時間操作の影響を受けます。</p>
+      <button id="start">Start</button>
+    </div>
+  </section>
+
+  <script src="./game.js"></script>
+</body>
+</html>
