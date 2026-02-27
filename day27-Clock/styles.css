@@ -35,6 +35,10 @@ main {
   position: relative;
 }
 
+main.hidden {
+  visibility: hidden;
+}
+
 .scoreboard {
   position: absolute;
   top: 22px;
@@ -62,6 +66,7 @@ canvas {
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0.01em;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
 }
 
 .staged-value {
@@ -70,28 +75,70 @@ canvas {
   line-height: 1;
   font-weight: 700;
   opacity: 0.92;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
 }
 
-.overlay {
+.screen {
   position: fixed;
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 24px;
-  background: rgba(0, 0, 0, 0.78);
+  padding: 32px 24px;
+  background: #000;
   text-align: center;
+  z-index: 10;
 }
 
-.overlay[hidden] {
+.screen[hidden] {
   display: none;
 }
 
-.overlay-card {
-  max-width: 480px;
-  padding: 28px;
-  border: 1px solid var(--overlay-border);
-  border-radius: 24px;
-  background: var(--overlay-bg);
+.title-layout,
+.result-layout {
+  width: min(100%, 760px);
+  display: grid;
+  justify-items: center;
+}
+
+.title-layout {
+  gap: clamp(28px, 5vh, 46px);
+}
+
+.title-logo {
+  width: min(100%, 680px);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.title-enemies {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3.5vw, 34px);
+}
+
+.title-enemies img {
+  width: clamp(72px, 9vw, 112px);
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.result-layout {
+  gap: clamp(34px, 7vh, 58px);
+}
+
+.result-title {
+  margin: 0;
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.result-score {
+  margin: 0;
+  font-size: clamp(76px, 12vw, 136px);
+  line-height: 0.9;
+  font-weight: 800;
+  font-family: "Arial Black", "Segoe UI", sans-serif;
 }
 
 h1 {
@@ -107,13 +154,29 @@ p {
 }
 
 button {
-  margin-top: 16px;
-  padding: 12px 18px;
-  border: 0;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--accent), #ff8f3f);
-  color: #111;
   font: inherit;
-  font-weight: 700;
   cursor: pointer;
+}
+
+.menu-button {
+  min-width: min(100%, 280px);
+  padding: 12px 20px;
+  border: 4px solid #f1f1f1;
+  background: transparent;
+  color: #f1f1f1;
+  font: inherit;
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.menu-button:hover,
+.menu-button:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  outline: none;
+}
+
+.title-button {
+  min-width: 220px;
 }

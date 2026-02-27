@@ -1,9 +1,13 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
+const main = document.querySelector("main");
 const scoreEl = document.getElementById("score");
 const stagedEl = document.getElementById("staged");
-const overlay = document.getElementById("overlay");
-const startButton = document.getElementById("start");
+const titleScreen = document.getElementById("title-screen");
+const resultScreen = document.getElementById("result-screen");
+const resultScoreEl = document.getElementById("result-score");
+const startButton = document.getElementById("start-button");
+const backButton = document.getElementById("back-button");
 const body = document.body;
 const root = document.documentElement;
 
@@ -35,6 +39,7 @@ const SCORE_ROLL_DURATION = 1;
 const SPAWN_ACCELERATION_PER_TURN = 0.16;
 
 const state = {
+  scene: "title",
   running: false,
   score: 0,
   stagedScore: 0,
@@ -48,6 +53,7 @@ const state = {
   themeInverted: false,
   themeMix: 0,
   totalForwardRotation: 0,
+  maxCommittedHalfTurn: 0,
   bullets: [],
   enemies: [],
   fireCooldown: 0,
@@ -60,6 +66,7 @@ const state = {
 };
 
 function resetGame() {
+  state.scene = "playing";
   state.running = true;
   state.score = 0;
   state.stagedScore = 0;
@@ -73,6 +80,7 @@ function resetGame() {
   state.themeInverted = false;
   state.themeMix = 0;
   state.totalForwardRotation = 0;
+  state.maxCommittedHalfTurn = 0;
   state.bullets = [];
   state.enemies = [];
   state.fireCooldown = 0;
@@ -84,6 +92,9 @@ function resetGame() {
   state.pendingPointerDelta = 0;
   syncTheme();
   updateHud();
+  titleScreen.hidden = true;
+  resultScreen.hidden = true;
+  main.classList.remove("hidden");
 }
 
 function updateHud() {
@@ -196,6 +207,10 @@ function isThemeInverted() {
   return halfTurnsFromStart % 2 === 1;
 }
 
+function getHalfTurnsFromStart() {
+  return Math.floor(Math.abs(getHourHandAngle() - INITIAL_HAND_ANGLE) / Math.PI);
+}
+
 function lerp(start, end, amount) {
   return start + (end - start) * amount;
 }
@@ -219,11 +234,13 @@ function updateThemeStyles() {
 
 function syncTheme() {
   const inverted = isThemeInverted();
-  if (inverted !== state.themeInverted) {
+  const halfTurnsFromStart = getHalfTurnsFromStart();
+  if (halfTurnsFromStart > state.maxCommittedHalfTurn && state.stagedScore > 0) {
     state.score += state.stagedScore;
     state.stagedScore = 0;
-    state.themeInverted = inverted;
+    state.maxCommittedHalfTurn = halfTurnsFromStart;
   }
+  state.themeInverted = inverted;
   body.classList.toggle("inverted", inverted);
 }
 
@@ -403,7 +420,7 @@ function drawField() {
 }
 
 function drawBullets() {
-  ctx.fillStyle = "#5ad6ff";
+  ctx.fillStyle = state.hp <= 2 ? "#ff5d73" : "#5ad6ff";
   for (const bullet of state.bullets) {
     ctx.beginPath();
     ctx.arc(bullet.x, bullet.y, BULLET_RADIUS, 0, TAU);
@@ -429,26 +446,13 @@ function drawEnemies() {
   }
 }
 
-function drawCenterWarning() {
-  if (state.hp > 2) {
+function render() {
+  if (state.scene !== "playing") {
     return;
   }
-  const pulse = 0.5 + Math.sin(performance.now() / 140) * 0.5;
-  ctx.save();
-  ctx.translate(CENTER.x, CENTER.y);
-  ctx.strokeStyle = `rgba(255, 93, 115, ${0.2 + pulse * 0.4})`;
-  ctx.lineWidth = 8;
-  ctx.beginPath();
-  ctx.arc(0, 0, 28 + pulse * 22, 0, TAU);
-  ctx.stroke();
-  ctx.restore();
-}
-
-function render() {
   drawField();
   drawEnemies();
   drawBullets();
-  drawCenterWarning();
 }
 
 function loop(now) {
@@ -465,13 +469,23 @@ function loop(now) {
 }
 
 function endGame() {
+  state.scene = "result";
   state.running = false;
   state.keys.clear();
   syncTheme();
-  startButton.textContent = "Retry";
-  overlay.hidden = false;
-  overlay.querySelector("p").textContent = `Score ${state.score} / Time ${state.gameTime.toFixed(1)}。時間操作で敵をずらしつつ再挑戦できます。`;
+  main.classList.add("hidden");
+  resultScoreEl.textContent = `${state.score}`;
+  resultScreen.hidden = false;
   updateHud();
+}
+
+function showTitleScreen() {
+  state.scene = "title";
+  state.running = false;
+  state.keys.clear();
+  titleScreen.hidden = false;
+  resultScreen.hidden = true;
+  main.classList.add("hidden");
 }
 
 window.addEventListener("keydown", (event) => {
@@ -521,12 +535,15 @@ canvas.addEventListener("pointerup", stopPointerDrag);
 canvas.addEventListener("pointercancel", stopPointerDrag);
 
 startButton.addEventListener("click", () => {
-  overlay.hidden = true;
   resetGame();
   requestAnimationFrame(loop);
+});
+
+backButton.addEventListener("click", () => {
+  showTitleScreen();
 });
 
 enemyImages.day.addEventListener("load", render);
 enemyImages.night.addEventListener("load", render);
 updateThemeStyles();
-render();
+showTitleScreen();

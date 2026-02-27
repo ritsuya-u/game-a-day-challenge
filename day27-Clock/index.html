@@ -3,8 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Clock Defense</title>
+  <title>Clock Shooter</title>
   <link rel="stylesheet" href="./styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0PL9KM0FWX');
+    </script>
 </head>
 <body>
   <main>
@@ -15,12 +22,22 @@
     <canvas id="game" width="960" height="960"></canvas>
   </main>
 
-  <section class="overlay" id="overlay">
-    <div class="overlay-card">
-      <h1>Clock Defense</h1>
-      <p>時計の長針を回して狙いを調整し、敵の前進速度に時間操作を上乗せしながら迎撃します。</p>
-      <p>弾は自動発射で巻き戻らず、敵だけが時間操作の影響を受けます。</p>
-      <button id="start">Start</button>
+  <section class="screen title-screen" id="title-screen">
+    <div class="title-layout">
+      <img class="title-logo" src="./images/title.png" alt="Clock Shooter">
+      <div class="title-enemies" aria-hidden="true">
+        <img src="./images/day_enemy.png" alt="">
+        <img src="./images/night_enemy.png" alt="">
+      </div>
+      <button class="menu-button title-button" id="start-button">START</button>
+    </div>
+  </section>
+
+  <section class="screen result-screen" id="result-screen" hidden>
+    <div class="result-layout">
+      <h1 class="result-title">Result</h1>
+      <p class="result-score" id="result-score">0</p>
+      <button class="menu-button" id="back-button">Back to Title</button>
     </div>
   </section>
 
