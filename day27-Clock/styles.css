@@ -129,6 +129,7 @@ canvas {
   margin: 0;
   font-size: clamp(38px, 6vw, 72px);
   font-weight: 700;
+  color: #fff;
   letter-spacing: 0;
   text-transform: none;
 }
@@ -138,6 +139,7 @@ canvas {
   font-size: clamp(76px, 12vw, 136px);
   line-height: 0.9;
   font-weight: 800;
+  color: #fff;
   font-family: "Arial Black", "Segoe UI", sans-serif;
 }
 

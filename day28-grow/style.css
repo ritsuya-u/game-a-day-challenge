@@ -1,0 +1,248 @@
+:root {
+  --bg: #e8e8e8;
+  --panel: #f6f4f2;
+  --ink: #111111;
+  --accent: #ef9273;
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.8), transparent 35%),
+    linear-gradient(180deg, #efefef 0%, var(--bg) 100%);
+  color: var(--ink);
+}
+
+body.playing {
+  background: var(--bg);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.screen {
+  width: min(100%, 960px);
+  min-height: min(92vh, 960px);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  position: relative;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.title {
+  justify-content: center;
+  gap: 32px;
+}
+
+.title-text {
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.title-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.creature-frame {
+  width: min(32vw, 170px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.creature-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(0 10px 12px var(--shadow));
+}
+
+.main-button {
+  min-width: 280px;
+  padding: 22px 36px;
+  border: 6px solid var(--ink);
+  background: #fbfbfb;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.main-button:hover,
+.main-button:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.12);
+  background: #fff7f2;
+}
+
+.play {
+  background: var(--bg);
+  justify-content: stretch;
+  gap: 20px;
+}
+
+.arena {
+  width: 100%;
+  flex: 1 1 54%;
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px;
+  background: var(--bg);
+}
+
+.arena.finished .creature {
+  transition: opacity 7s ease;
+  opacity: 0;
+}
+
+.creature {
+  position: absolute;
+  width: clamp(76px, 18vw, 150px);
+  aspect-ratio: 1;
+  user-select: none;
+  touch-action: manipulation;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease, filter 0.18s ease;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.12));
+}
+
+.creature.pulse {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+.creature.evolving {
+  animation: evolveBlink 2s steps(1, end);
+}
+
+@keyframes evolveBlink {
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dialog {
+  width: min(100%, 640px);
+  min-height: 180px;
+  padding: clamp(20px, 3vw, 28px);
+  border: 5px solid var(--ink);
+  background: var(--bg);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+}
+
+.dialog-text {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.2vw, 1.55rem);
+  line-height: 1.45;
+  white-space: pre-line;
+}
+
+.ending-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.6s ease;
+}
+
+.ending-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ending-card {
+  width: min(100%, 760px);
+  min-height: 240px;
+  padding: clamp(24px, 4vw, 40px);
+  border: 5px solid var(--ink);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 640px) {
+  .app {
+    padding: 16px;
+  }
+
+  .screen {
+    min-height: calc(100vh - 32px);
+  }
+
+  .main-button {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .dialog,
+  .ending-card {
+    min-height: 170px;
+  }
+}

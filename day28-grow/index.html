@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>てててって</title>
+  <link rel="stylesheet" href="./style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0PL9KM0FWX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0PL9KM0FWX');
+  </script>
+</head>
+<body>
+  <main class="app">
+    <section class="screen title active" id="titleScreen">
+      <h1 class="title-text">てててって</h1>
+      <div class="title-card">
+        <div class="creature-frame">
+          <img src="./images/level_1.png" alt="単細胞のて">
+        </div>
+        <button class="main-button" id="startButton" type="button">てを育てる</button>
+      </div>
+    </section>
+
+    <section class="screen play" id="playScreen" aria-live="polite">
+      <div class="arena" id="arena">
+        <img class="creature" id="creature" src="./images/level_1.png" alt="成長中のて">
+        <div class="ending-overlay" id="endingOverlay" aria-hidden="true">
+          <div class="ending-card">
+            <p class="dialog-text" id="endingText"></p>
+          </div>
+        </div>
+      </div>
+
+      <section class="dialog" aria-label="message box">
+        <p class="dialog-text" id="messageText"></p>
+      </section>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
